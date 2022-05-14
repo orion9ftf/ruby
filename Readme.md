@@ -193,7 +193,7 @@ end
 
  Si intentamos acceder utlizando variables de clase: 
 
-```
+```rb
 class Video
   @@type = "video/mp4"
   
@@ -204,7 +204,6 @@ class Video
   def type_desde_objeto
     p @@type
   end
-
 end
 
 Video.type_desde_clase #"video/mp4"
@@ -213,7 +212,7 @@ Video.new.type_desde_objeto # "video/mp4"
 
  Ahora si intentamos acceder a una variable de instancia:
 
-```
+```rb
 class Video
   @type = "video/mp4"
   
@@ -240,7 +239,7 @@ Vemos que en los métodos de clase no nos da mayor dificultad para su impresión
 
  Y en el caso de la variable de instancia, nos entrega un `nil`
 
-```
+```rb
 class Viyeo
   @@de_clase = "soy de clase"
   @de_instancia = "soy de instancia"
@@ -260,9 +259,9 @@ YouTube.test
 *****************************************************
 
 
- Las clase hija solohereda las variables de clase:
+ Las clase hija solo hereda las variables de clase:
 
-```
+```rb
     class Viyeo
   @@de_clase = "soy de clase"
   @de_instancia = "soy de instancia"
@@ -290,7 +289,7 @@ YouTube.test
 
  Cambiar el valor de la variabe de clase:
 
-```
+```rb
     class Viyeo
   @@de_clase = "soy de clase"
   @de_instancia = "soy de instancia"
@@ -325,7 +324,7 @@ Viyeo.test
 
  Ahora si creamos un ejemplo de Polimorfismo quedaría así:
 
-```
+```rb
 class Video
     def play
     end
@@ -358,7 +357,7 @@ end
 
  Y nos respondería de la siguiente manera
 
-```
+```rb
   "inserta el reproductor de YouTube"
   "inserta el reproductor de vimeo"
   "inserta el reproductor de YouTube"
@@ -373,30 +372,30 @@ end
  Métodos que reciben bloques:
 - Debemos ocupar la palabra reservada `yield`
 
-```
+```rb
 def hola
     yield
 end
 
-hola { puts "Hola, mi nombre es Ewi!" }
+hola { puts "Hola, mi nombre es Juanito!" }
 ```
 
  Nos imprimirá:
 
-  `Hola, mi nombre es Ewi!`
+  `Hola, mi nombre es Juanito!`
 
  También lo podemos llamar de la siguiente manera, y nos imprimirá exactamente lo mismo:
 
-```
+```rb
 hola do
-    puts "Hola, mi nombre es Ewi!"
+    puts "Hola, mi nombre es Juanito!"
 end
 ```
 
  block_given?
 - Nos dará true si el método recibe un bloque, de lo contrario dará un false.
 
-```
+```rb
 def hola
     yield if block_given?
 end
@@ -408,7 +407,7 @@ hola()
 
  Ahora si le enciamos un bloque, lo ejecuta:
 
-```
+```rb
 def hola
     yield if block_given?
 end
@@ -420,7 +419,7 @@ hola { puts "Hola mundo!" }
 
  Podemos pasarle un argumento que inicie con ampersand(&), de la siguiente manera:
 
-```
+```rb
 def hola &bloque
     bloque.call if block_given?
 end
@@ -430,7 +429,7 @@ hola { puts "Hola mundo!" }
 
  Y también podemos seguir utilizando `yield`, en este segundo método tienes el bloque almacenado dentro de una variable '&bloque', lo  puedes llamar en otro método también.
 
-```
+```rb
 def hola &bloque
     yield if block_given?
 end
@@ -440,7 +439,7 @@ hola { puts "Hola mundo!" }
 
  Otro ejemplo de '&':
 
-```
+```rb
 def hola &bloque
     otro_hola(&bloque)
 end
@@ -455,7 +454,7 @@ hola { puts "Hola mundo!" }
 
  Nos imprime lo siguiente:
 
-```
+```shell
   otro bloque
   Hola mundo!
 ```
@@ -466,7 +465,7 @@ hola { puts "Hola mundo!" }
 
  Por ejemplo, necesitamos que nos imprima "Hola y su nombre", en 4 idiomas:
 
-```
+```rb
 class Usuario
   attr_accessor :nombre
 
@@ -475,31 +474,31 @@ class Usuario
   end
 end
 
-ewi = Usuario.new
+Juanito = Usuario.new
 
-ewi.nombre = "Ewi"
+Juanito.nombre = "Juanito"
 
-ewi.saludar { |nombre| puts "Hola #{nombre}" }
-ewi.saludar { |nombre| puts "Hello #{nombre}" }
-ewi.saludar { |nombre| puts "こんにちは #{nombre}" }
-ewi.saludar { |nombre| puts "Ciao #{nombre}" }
+Juanito.saludar { |nombre| puts "Hola #{nombre}" }
+Juanito.saludar { |nombre| puts "Hello #{nombre}" }
+Juanito.saludar { |nombre| puts "こんにちは #{nombre}" }
+Juanito.saludar { |nombre| puts "Ciao #{nombre}" }
 
 ```
 
  Esto se vería de la siguiente manera:
 
-```
-Español:  Hola Ewi
-Inglés:   Hello Ewi
-Japonés:  こんにちは Ewi
-Italiano: Ciao Ewi
+```rb
+Español:  Hola Juanito
+Inglés:   Hello Juanito
+Japonés:  こんにちは Juanito
+Italiano: Ciao Juanito
 ```
 
 ### Los argumentos que recibe un bloque se enlistan en barras verticales que llamaremos pipe ||, si tenemos más de un argumento para pasarle, debemos separarlos por una coma ',' . Todo va a depender de cuántos argumentos esté recibiendo el bloque.
 
  Este bloque puede retornar un valor:
 
-```
+```rb
 class Usuario
   attr_accessor :nombre
 
@@ -509,29 +508,29 @@ class Usuario
   end
 end
 
-ewi = Usuario.new
+Juanito = Usuario.new
 
-ewi.nombre = "Ewi"
+Juanito.nombre = "Juanito"
 
-ewi.saludar_with { |nombre| "Hola #{nombre}" }
-ewi.saludar_with { |nombre| "Hello #{nombre}" }
-ewi.saludar_with { |nombre| "こんにちは #{nombre}" }
-ewi.saludar_with { |nombre| "Ciao #{nombre}" }
+Juanito.saludar_with { |nombre| "Hola #{nombre}" }
+Juanito.saludar_with { |nombre| "Hello #{nombre}" }
+Juanito.saludar_with { |nombre| "こんにちは #{nombre}" }
+Juanito.saludar_with { |nombre| "Ciao #{nombre}" }
 ```
 
  El valor que un bloque retorna es el resultado de la última expresión del bloque mismo.
 
  Podríamos cambir lo mismo a múltiples expresiones así:
 
-```
-ewi.saludar_with do |nombre| 
+```rb
+Juanito.saludar_with do |nombre| 
   saludo = "Hello #{nombre}"
 end
 ```
 
  Esto nos retornaría exactamente lo mismo:
 
-  `Hello ewi`
+  `Hello Juanito`
 
 ***Dentro de un bloque no se recomienda utilizar la palabra reservada `return`, ya que es exclusivo de los métodos.***
 
@@ -541,29 +540,29 @@ end
 
  La variable 'nombre' no fue declarada dentro del bloque, ni tampoco fue enviada como argumento.
 
-```
+```rb
 def hola
     yield
 end
 
-nombre = "ewi"
+nombre = "Juanito"
 
 hola { puts "hola #{nombre}" }
 
 ```
 
-  `hola ewi`
+  `hola Juanito`
 
  El bloque tiene acceso a esta variable, ya que recibe el bloque desde donde se está ejecutando, entonces `hola { puts "hola #{nombre}" }`, también es parte del contexto donde se está ejecutando el bloque.
 
  Entonces el bloque también puede modificar esta variable:
 
-```
+```rb
 def hola
     yield
 end
 
-nombre = "ewi"
+nombre = "Juanito"
 
 hola do
     nombre = "Mateo"
@@ -575,7 +574,7 @@ puts nombre
 
  Nos retorna:
 
-```
+```shell
 hola Mateo
 Mateo
 ```
@@ -588,7 +587,7 @@ Mateo
 
  Ejemplo de proc en un método
 
-```
+```rb
 def hola &block
     block.call
 end
@@ -604,7 +603,7 @@ hola { puts "hola a tod@s!" }
 
  Nos quedaría el código así:
 
-```
+```rb
 def hola &block
     puts block.class.name
     block.call
@@ -613,7 +612,7 @@ end
 hola { puts "hola a tod@s!" }
 ```
 
-```
+```rb
 Proc
 hola a tod@s!
 ```
@@ -625,7 +624,7 @@ hola a tod@s!
 - Los bloques no se pueden almacenar en vaiables y no se pueden intercambiar entre métodos.
 - Un método puede recibor un método, mientras que puede recibir múltiples proc, ejemplo:
 
-```
+```rb
 def hola proc1, proc2
     proc1.call
     proc2.call
@@ -639,7 +638,7 @@ hola(proc1, proc2)
 
 - Esto nos retornaría:
 
-```
+```shell
 hola proc1
 hola proc2
 ```
@@ -652,7 +651,7 @@ hola proc2
 
  Las cadenas de texto en Ruby las podemos escribir con comillas dobles o cadenas simples.
 
-```
+```rb
 puts "hola"
 
 puts 'aló!'
@@ -670,7 +669,7 @@ puts "hola a todos\s" * 3
 
  Variables sencillas:
 
-```
+```rb
 numero1 = 10
 numero2 = 20
 
@@ -682,7 +681,7 @@ puts "el resultado de la suma es #{resultado}"
 
  Suma y resta, concatenación:
 
-```
+```rb
 numero1 = 10
 numero2 = 20
 
@@ -697,7 +696,7 @@ puts "el resultado de la resta es #{resultado2}"
 
  Esto nos devolvería lo siguiente:
 
-```
+```shell
 30
 el resultado de la suma es 30
 el resultado de la resta es -10
@@ -705,7 +704,7 @@ el resultado de la resta es -10
 
  Cuando la familia de operaciones aritméticas se agranda:
 
-```
+```rb
 numero1 = 10
 numero2 = 20
 
@@ -725,7 +724,7 @@ puts "el resultado de la multiplicación es #{resultado3}"
 
  El resultado de todos estos puts nos daría lo siguiente:
 
-```
+```shell
 30
 el resultado de la suma es 30
 el resultado de la resta es -10
@@ -734,7 +733,7 @@ el resultado de la multiplicación es 200
 
  Si tuviéramos que dividir ambas variables:
 
-```
+```rb
 # división
 resultado4 = numero2 / numero1
 puts "el resultado de la división es #{resultado4}"
@@ -750,7 +749,7 @@ puts "el resultado de la división es #{resultado4}"
 
  Ahora si tenemos dos cadenas de texto almacenadas en variables diferentes y necesitamos concatenarlas, es más saludable interpolarlas, de la siguiente manera:
 
-```
+```rb
 cadena1 = 'curso de '
 cadena2 = 'Ruby'
 
@@ -767,7 +766,7 @@ puts resultado
 
  El módulo, nos devuelve el sobrante de una división.
 
-```
+```rb
 puts 30 / 7
 puts 30 % 7
 puts 30 / 7.0
@@ -781,7 +780,7 @@ puts 30 / 7.0
 
  El tamaño de la cadena:
 
-```
+```rb
 nombre = 'curso de Ruby!'
 
 puts nombre.length
@@ -791,7 +790,7 @@ Esto nos devolverá el largo total de la cadena, incluyendo los espacios y simbo
 
  Cómo definimos un método?
 
-```
+```rb
 def name
     instruciones
 end
@@ -799,7 +798,7 @@ end
 
  Para que este método se ejecute tengo que llamarlo!
 
-```
+```rb
 def saludar
     puts 'Hola!'
 end
@@ -811,7 +810,7 @@ Nos devolverá: `Hola!`
 
 Puedo tener más de un método en mi archivo y a ambos llamarlos para que se ejecute la acción a realizar:
 
-```
+```rb
 def saludar
     puts 'Hola!'
 end
@@ -827,7 +826,7 @@ despedirse()
 
 Esto nos devolverá el método llamado, según la acción definida:
 
-```
+```shell
 Hola!
 Adios!
 ```
@@ -840,8 +839,8 @@ Es aquí donde te encontrarás con dos tipos de alcances: las globales y las loc
 
 Ejemplo de variable global:
 
-```
-nombre = 'Ewi'
+```rb
+nombre = 'Juanito'
 
 def saludar
     puts 'Hola!'
@@ -856,13 +855,13 @@ end
 despedirse
 ```
 
-En este caso la variable con valor `Ewi`, la podemos utilizar en los métodos que siguen.
+En este caso la variable con valor `Juanito`, la podemos utilizar en los métodos que siguen.
 
 Mientras que las variables locales, sólo la podemos utilizar dentro del método.
 
-```
+```rb
 def saludar
-    nombre = 'Ewi'
+    nombre = 'Juanito'
     puts 'Hola!'
 end
 
@@ -881,7 +880,7 @@ Los Parámetros o argumentos en Ruby:
 
 Un parámetro o argumento, va a ser una variable que se va a definir localmente, junto con la función de un método.
 
-```
+```rb
 def saludar(nombre)
     puts 'Hola!'
 end
@@ -892,7 +891,7 @@ saludar
 Esto nos arrojará un error ya que no le estamos dando el argumento en el método:
 
 
-```
+```shell
 Traceback (most recent call last):
         1: from parametros_argumentos.rb:5:in `<main>'
 parametros_argumentos.rb:1:in `saludar': wrong number of arguments (given 0, expected 1) (ArgumentError)
@@ -902,21 +901,21 @@ parametros_argumentos.rb:1:in `saludar': wrong number of arguments (given 0, exp
 
 Lo primero es que este método para funcionar necesita un argumento.
 
-```
+```rb
 def saludar(nombre)
     puts "Hola #{nombre}"
 end
 
-saludar('Ewi')
+saludar('Juanito')
 ```
 
 Aquí vemos que lo solucionamos y a su vez lo interpolamos de maera eficiente.
 
-Nos devuelve:  `Hola Ewi`
+Nos devuelve:  `Hola Juanito`
 
 Esto en un pequeño ejercicio matemático se vería así:
 
-```
+```rb
 def suma(num1, num2)
     resultado = num1 + num2
     puts resultado
@@ -929,7 +928,7 @@ Nos devolvería: `8`
 
 Ahora la familia se nos agrandó, por tanto lo vemos así:
 
-```
+```rb
 def suma(num1, num2)
     resultado = num1 + num2
     puts resultado
@@ -953,7 +952,7 @@ Esto nos devolverá: `8` y `-2`
 
 Es una instrucción va a ser que nuestra función nos devuelve un valor, por ejemplo:
 
-```
+```rb
 def suma(num1, num2)
     resultado = num1 + num2
     return resultado
@@ -963,11 +962,9 @@ valor = suma(3,5)
 puts valor
 ```
 
-Esto nos devuelve de manera ordenada: `puts "La suma es: #{valor}"
-`
+Esto nos devuelve de manera ordenada: `puts "La suma es: #{valor}"`
 
-Esto también funciona: `puts valor = suma(3,5)
-`
+Esto también funciona: `puts valor = suma(3,5)`
 
 ***NOTA: Para que `return` nos devuelva un valor, es necesario guardarlo en una variable y luego llamar a esa variable. El `return`, hace que nuestra función se comporte como variable.***
 
@@ -980,7 +977,7 @@ Un alias, va a ser un sobrenombre que se le va a aplicar a un método. Nos ayuda
 
 Como por ejemplo:
 
-```
+```rb
 def saludar
     puts 'Hola!'
 end
@@ -994,7 +991,7 @@ saludar # con este nombre tambien funciona
 
 Otro ejemplo de método con alias:
 
-```
+```rb
 def saludar
     puts 'Hola!'
 end
@@ -1011,7 +1008,7 @@ saludar
 
 Nos devuelve: 
 
-```
+```shell
 Hola!
 Hola Amigue!
 ```
@@ -1030,7 +1027,7 @@ Tenemos el `true` y el `false`, esto nos ayudará en las estructuras de control.
 ***Operadores lógicos:***
 
 
-```
+```rb
 < menor que
 > mayor que
 <= menor o igual
@@ -1041,7 +1038,7 @@ Tenemos el `true` y el `false`, esto nos ayudará en las estructuras de control.
 
 Nos ayudan a realizar comparaciones lógicas, ejemplo:
 
-```
+```rb
 resultado = 6 < 9
 
 puts resultado
@@ -1053,7 +1050,7 @@ Esto nos devuelve un: `true`
 
 Condicionales:
 
-```
+```rb
 if true
     puts 'verdadero'
 else
@@ -1063,7 +1060,7 @@ end
 
 Esta es la estructura de la condicional, si la condición se cumple, va a ejecutar el código luego del `if` sino `else`, y así podemos agregar varias condiciones para las distintas operaciones que necesitemos ejecutar.
 
-```
+```rb
 if 5 < 3
     puts 'sigue participando :('
 elsif 5 > 3
@@ -1075,7 +1072,7 @@ Esto nos devuelve un `false` hasta que la condición se cumpla, como en este cas
 
 Estructura condicional `unless`:
 
-```
+```rb
 unless condition
   codigo
 end
@@ -1083,7 +1080,7 @@ end
 
 Ejemplo:
 
-```
+```rb
 unless 5 == 45
     puts 'la condicion es falsa'
 end
@@ -1091,21 +1088,20 @@ end
 
 Estructura condicional `case`:
 
-```
-case object # aquí va el valor o la variable que vamos a evaluar dentro de nuestra estructura
-when condition
-    
-when 
-    
-else
-    
-end
+```rb
+  case object # aquí va el valor o la variable que vamos a evaluar dentro de nuestra estructura
+  when condition
+      
+  when 
+      
+  else
+      
+  end
 ```
 
 Ejemplo:
 
-```
-
+```rb
 valor = 2
 
 case valor
@@ -1120,7 +1116,7 @@ end
 
 Estructura condicional `case` con rango:
 
-```
+```rb
 valor = 2
 
 case valor
@@ -1137,7 +1133,7 @@ end
 
 Nos devolverá: `el valor esta entre 0 y 10`
 
-```
+```rb
 valor = 25
 
 case valor
@@ -1158,7 +1154,7 @@ Esto nos devolverá: `el valor esta entre 21 y 30`
 
 El peligro para la sociedad; los ciclos infinitos:
 
-```
+```rb
 variable = 0
 
 while variable < 50000
@@ -1169,7 +1165,7 @@ end
 
 Esto ud no lo haga :(
 
-```
+```rb
 while true
     puts 'hola'
 end
@@ -1181,7 +1177,7 @@ Es una estructura repetitiva, la cual nos permite repetir código que nos puede 
 
 Por ejemplo, si necesito imprimir la palabra 'Hola' muchas veces, los ciclos nos ayudarían de manera sencilla a ejecutarlo.
 
-```
+```rb
 valor = 0
 
 while valor < 10
@@ -1198,7 +1194,7 @@ Esto nos devolverá 10 veces el valor: `Hola`.
 
 Los Arreglos se rigen por algo llamado subindice, el cualnos permite acceder a un dato en específico que podemos llamar por un número de posición de la siguiente manera:
 
-```
+```rb
 paises = ['Canadá', 'USA', 'México']
 
 puts paises[1]
@@ -1210,7 +1206,7 @@ R: `USA`
 
 Otro ejemplo:
 
-```
+```rb
 numeros = [10, 20, 30, 40]
 
 puts numeros.sum
@@ -1222,14 +1218,14 @@ Podemos evitarnos las comas y las comillas con: `%w`
 
 Así:
 
-```
+```rb
 europa = %w{España Francia Italia Alemania}
 puts europa
 ```
 
 Nos devuelve: 
 
-```
+```shell
 España
 Francia
 Italia
@@ -1238,7 +1234,7 @@ Alemania
 
 Combinar los arrays:
 
-```
+```rb
 paises = ['Canadá', 'USA', 'México']
 
 numeros = [10, 20, 30, 40]
@@ -1251,7 +1247,7 @@ puts datos
 
 Esto nos devolverá:
 
-```
+```shell
 80.2
 Canadá
 USA
@@ -1265,7 +1261,7 @@ Alemania
 
 Podríamos acceder a ellas con subíndice:
 
-```
+```rb
 datos = [80.2, paises, 'hola', europa]
 puts datos[2]
 ```
@@ -1274,7 +1270,7 @@ R: `hola`
 
 El `%w` va a identificar a todo lo que se encuentra dentro de las llaves como cadena de texto, por ejemplo:
 
-```
+```rb
 europa = %w{España numeros Francia Italia Alemania}
 puts europa[1]
 ```
@@ -1294,7 +1290,7 @@ Las constantes siempre deben estar escritas con letra mayúsculas miestras que l
 
 Por ejemplo:
 
-```
+```rb
 PI = 3.1416
 PI = 3.14169
 
@@ -1303,7 +1299,7 @@ puts PI
 
 Me va a mostrar el resultado de la constante pero me va a enviar una advertencia:
 
-```
+```shell
 constantes.rb:5: warning: already initialized constant PI
 constantes.rb:4: warning: previous definition of PI was here
 3.14169
@@ -1311,7 +1307,7 @@ constantes.rb:4: warning: previous definition of PI was here
 
 Otro ejemplo de constante sería el cálculo de un sueldo:
 
-```
+```rb
 IVA = 0.16
 sueldo = 200
 subtotal = sueldo * IVA
@@ -1329,7 +1325,7 @@ R: `168.0`
 
 La interpolación, es la mezcla de datos de manera ordenada que va entre comillas dobles con un `#` y con llaves `{}`, y con una sintáxis de la siguiente manera:
 
-```
+```rb
 num1 = 12
 num2 = 23
 
@@ -1359,7 +1355,7 @@ En Ruby los paréntesis `()` son opcionales, y  los punto y comas `;` también.
 
 Ingresar datos a través de la consola de Ruby(irb):
 
-```
+```rb
 puts 'cuál es tu nombre?'
 
 nombre = gets.chomp
@@ -1369,10 +1365,10 @@ puts "Hola #{nombre}"
 
 Esto nos devolverá:
 
-```
+```shell
 cuál es tu nombre?
-ewi # esto es el nombre que ingresa la usuaria
-Hola ewi
+Juanito # esto es el nombre que ingresa la usuaria
+Hola Juanito
 ```
 
 ***.chomp elimina el enter que di al ingresar el nombre.***
@@ -1381,7 +1377,7 @@ Hola ewi
 
 El .reverse lo que hace es:
 
-```
+```rb
 cadena = 'ruby desde cero'
 puts cadena.reverse
 ```
@@ -1435,7 +1431,7 @@ Es un método peligroso, ya que va a modificar el objeto.
 
 Hasta aquí todo bien:
 
-```
+```rb
 cadena = 'ruby desde cero'
 resultado = cadena.upcase
 
@@ -1445,14 +1441,14 @@ puts cadena
 
 Esto nos devuelve:
 
-```
+```shell
 RUBY DESDE CERO
 ruby desde cero
 ```
 
 Pero si lo modifico el método upcase con '!' nos entrega esto:
 
-```
+```rb
 cadena = 'ruby desde cero'
 resultado = cadena.upcase!
 
@@ -1461,7 +1457,8 @@ puts cadena
 ```
 
 R:
-```
+
+```shell
 RUBY DESDE CERO
 RUBY DESDE CERO
 ```
@@ -1473,7 +1470,7 @@ Lo peligroso es que modifica no solo el resultado, sino que el método 'cadena' 
 ### Argumentos variables
 
 
-```
+```rb
 def nombres(arg1, arg2,arg3)
     puts arg1
     puts arg2
@@ -1481,13 +1478,12 @@ def nombres(arg1, arg2,arg3)
 end
 
 nombres('Ana', 'Camilo', 'Antonia')
-
 ```
-
 
 O tambien podemos pasarle varios argumentos de la siguiente manera:
 
-```def nombres(*args)
+```rb
+def nombres(*args)
   puts args
 end
 
@@ -1496,7 +1492,7 @@ nombres('Ana', 'Camilo', 'Antonia')
 
 En ambos casos nos imprimirá en consola:
 
-```
+```shell
 Ana
 Camilo
 Antonia
@@ -1506,7 +1502,7 @@ Antonia
 
 ### Argumento o parametro opcional:
 
-```
+```rb
 def nombres(nom1, nom2)
     puts "El nombre 1 es: #{nom1}"
     puts "El nombre 2 es: #{nom2}"
@@ -1517,7 +1513,7 @@ nombres('Ana', 'Camila')
 
 Nos devuelve:
 
-```
+```shell
 El nombre 1 es: Ana
 El nombre 2 es: Camila
 ```
@@ -1533,7 +1529,8 @@ Los rangos, son la sucesión de números la cual necesitamos ejeutar con un orde
 `puts (1..8).to_a`
 
 R: 
-```
+
+```shell
 1
 2
 3
@@ -1548,7 +1545,7 @@ Y ahora a la inversa:
 
 `puts (-10..-1).to_a`
 
-```
+```shell
 -10
 -9
 -8
@@ -1563,7 +1560,7 @@ Y ahora a la inversa:
 Los rangos van a ser ejecutados siempre de positivos. Si tengo `puts (10..1)`, esto no se va a ejecutar.
 
 
-```
+```rb
 rango = (1..5).to_a
 
 puts rango.min # 1
@@ -1578,7 +1575,7 @@ puts (3..6) === 50 # false
 
 ### Ejemplo de una clase:
 
-```
+```rb
 class Automovil
     # atributos
     def initilize(color, marca)
@@ -1601,7 +1598,7 @@ end
 
 Le podemos agregar lo siguiente para que funcione esta clase 
 
-```
+```rb
 corvette = Automovil.new('negro cereza', 'chevrolet')
 corvette.partir
 puts corvette.partir.methods.sort
@@ -1613,7 +1610,7 @@ Los accesores nos van a permitir, habilitar los atributos si necesitamos llamarl
 
 Para acceder a la marca y el color, debemos definirlos previamente:
 
-```
+```rb
     def color
       @color
     end
@@ -1624,18 +1621,17 @@ Para acceder a la marca y el color, debemos definirlos previamente:
 ```
 El llamdo:
 
-```
+```rb
 puts corvette.marca
 puts corvette.color
 ```
 
 La respuesta a ese llamado sería algo así:
 
-```
+```shell
 chevrolet
 negro cereza
 ```
-
 
 O podemos leer los datos de la siguiente manera:
 
@@ -1643,7 +1639,7 @@ O podemos leer los datos de la siguiente manera:
 
 Esto nos devolvería los siguiente:
 
-```ruby
+```shell
 chevrolet
 negro cereza
 ```
@@ -1651,7 +1647,7 @@ negro cereza
 Para cambiar el valor o atributos, podemos hacerlo con `attr_writer :color, :marca`
 
 
-```ruby
+```rb
 corvette.marca = 'toyota'
 puts corvette.marca
 ```
@@ -2193,7 +2189,7 @@ de lineas
 
 ### Operadores Lógicos:
 
-```
+```rb
 Operados &&(and, y)
 
 expresion1 expresion2 respuesta
@@ -2205,7 +2201,7 @@ falso      falso        falso
 ```
 
 
-```
+```rb
 Operados || (or, o)
 
 expresion1 expresion2 respuesta
@@ -2222,7 +2218,7 @@ Carácteres de escape: `puts "has seleccionado \"arroz\""`. Estas barras inverti
 
 Ciclo `while`:
 
-```
+```rb
 # imprimir del 1 al 10
 
 i = 1
@@ -2235,7 +2231,7 @@ end
 
 ***Until*** 'hasta que'
 
-```
+```rb
 i = 0
 
 until i > 10
@@ -2246,7 +2242,7 @@ end
 
 Nos devolverá: 
 
-```
+```shell
 0
 1
 2
@@ -2265,7 +2261,7 @@ Nos devolverá:
 
 Entre el 4 y 5 nos damos cuenta de que nos entrega un pequeño salto en las líneas. El ciclo pasa a la siguiente repetición.
 
-```
+```rb
 i = 1
 
 while i <= 10
@@ -2280,7 +2276,7 @@ end
 
 Esto nos devuelve:
 
-```
+```shell
 1
 última linea de ciclo
 2
@@ -2324,7 +2320,7 @@ Antes que hacer cualquier acción, analicemos esto:
 
 5° Que el usuario pueda ver impreso lo que ingresó en consola.
 
-```
+```rb
 lista = []
 
 continuar = true
@@ -2349,7 +2345,7 @@ puts "Tu lista de productos ahora incluye: #{lista}"
 
 Esto nos imprimirá : 
 
-```
+```shell
 Ingresa un producto a tu lista de compras
 cafe
 Deseas agregar al carrito? (s) o salir (n)
@@ -2367,8 +2363,7 @@ Mientras la variable `continuar`, se mantenga verdadera, el ciclo continuará, s
 
 ## Arreglos y sus métodos:
 
-```
-
+```rb
 paises = [
     "México", 
     "Chile", 
@@ -2394,7 +2389,7 @@ puts paises
 
 Para inicializar un arreglo podemos utilizar ambos casos pero es mejor utilizar los `[]`:
 
-```
+```rb
 arreglo = []
 arreglo = Array.new
 ```
@@ -2405,7 +2400,7 @@ arreglo = Array.new
 
 1- Esta iteración va a recorrer el arrego y lo mostrará con un gión antes del nombre:
 
-```
+```rb
 paises = [
   "México", 
   "Chile", 
@@ -2422,7 +2417,7 @@ paises = [
 
 Resultado de la iteración:
 
-```
+```shell
 - México
 - Chile
 - Japón
@@ -2433,7 +2428,7 @@ Resultado de la iteración:
 
 2- Tengo un arreglo de número el cual necesito recorrer y también mostrarlo, pero multiplicando en cada vuelta de la iteración cada número multiplicado por `5`:
 
-```
+```rb
 num = [1,2,3,4,5,6,7,8]
 
 num.each do |i|
@@ -2443,7 +2438,7 @@ end
 
 Esto nos mostrará: 
 
-```
+```shell
 5
 10
 15
@@ -2456,7 +2451,7 @@ Esto nos mostrará:
 
 3- Supongamos que tenemos un juego en el cual, se pierde 5 puntos por cada iteración:
 
-```
+```rb
 enemigos_vidas = [18, 12, 5, 14]
 
 enemigos_vidas.map! do |i|
@@ -2468,7 +2463,7 @@ puts enemigos_vidas
 
 Esto nos devolverá:
 
-```
+```shell
 13
 7
 0
@@ -2489,7 +2484,7 @@ Los nombres por supuesto deben provenir del arreglo.
 
 Una de las miles de maneras de resolverlo:
 
-```
+```rb
 hermanos = ["María", "José", "Pedro"]
 
 m = hermanos[0]
@@ -2507,7 +2502,7 @@ El siguiente arreglo representa las temperaturas de cada día de la semana pasad
 temperaturas = [24,30,29,32,24,30,31]
 Crea un programa que calcule la temperatura promedio de toda la semana, a partir de los valores del arreglo.
 
-```
+```rb
 temperaturas = [24,30,29,32,24,30,31]
 
 promedio = temperaturas.sum / temperaturas.size.to_f
@@ -2531,7 +2526,7 @@ Esto hará que Ruby, vaya a buscar letra por letra y mostrarlas de la `a` hasta 
 Podemos guardar los rangos en variables:
 
 
-```
+```rb
 digitos = (-4..9).to_a
 
 puts digitos
@@ -2539,7 +2534,7 @@ puts digitos
 
 Por ejemplo, esto nos devolverá lo siguiente:
 
-```
+```shell
 -4
 -3
 -2
@@ -2559,7 +2554,7 @@ Por ejemplo, esto nos devolverá lo siguiente:
 
 También lepodemos preguntar si incluye un número específico:
 
-```
+```rb
 digitos = (-4..9).to_a
 
 puts digitos.include?(3)
@@ -2572,7 +2567,7 @@ R: `true`
 ### También podemos preguntar por el número menor o mayor del rango:
 
 
-```
+```rb
 digitos = (-4..9).to_a
 
 puts digitos.min
@@ -2584,7 +2579,7 @@ Nos devuelve el valor mayor dentro del rango: `9` y el menor: `-4`.
 
 ***Se puede iterar o recorrer con `each`:***
 
-```
+```rb
 digitos = (-4..9).to_a
 
 digitos.each do |i|
@@ -2598,7 +2593,7 @@ Este recorrido nos devuelve:
 
 Ahora podemos recorrer un rango de letras:
 
-```
+```rb
 ("b".."m").each  do |i|
     print "#{i},"
 end
@@ -2611,7 +2606,7 @@ Nos da: `b,c,d,e,f,g,h,i,j,k,l,m,`
 Nos permite recorrer de 5 en 5 o el número que necesitemos, podría haber sido de 2 en 2:
 
 
-```
+```rb
 (0..50).step(5).each do |num|
     puts num
 end
@@ -2622,7 +2617,7 @@ A esto se le llama encadenamiento de métodos, ya que puedes poner un método y 
 
 El método step nos devolverá esto:
 
-```
+```shell
 5
 10
 15
@@ -2634,8 +2629,6 @@ El método step nos devolverá esto:
 45
 50
 ```
-
-
 
 #### Dos puntos v/s tres puntos en los rangos: 
 
@@ -2649,21 +2642,21 @@ El `to_a`, nos permite convertir en rango en un arreglo.
 
 Usemos la consola interactiva de Ruby:
 
-```
+```shell
 2.5.3 :001 > (1..10).to_a
   => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] 
 ```
 
 También podriamos guardarlo en una variable, como por ejemplo:
 
-```
+```rb
 arreglo = (2..20).to_a
 puts arreglo
 ```
 
 o también desde la consola interactiva de Ruby:
 
-```
+```shell
 2.5.3 :001 > arreglo = (2..15).to_a
  => [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 ```
@@ -2672,7 +2665,7 @@ o también desde la consola interactiva de Ruby:
 
 NOTA:En vez de pasarle un arreglo, le pasamos un rango de índices dentro del areglo
 
-```
+```rb
 arreglo = (2..20).to_a
 
 puts arreglo[0..5]
@@ -2680,7 +2673,7 @@ puts arreglo[0..5]
 
 R:
 
-```
+```shell
 2
 3
 4
@@ -2703,7 +2696,7 @@ R:
 
 Este sería un objeto creado sin atributos:
 
-```
+```rb
 class Perrito
   
 end
@@ -2713,7 +2706,7 @@ perrito1 = Perrito.new
 
 Le agregamos variables de instancia, con un constructor:
 
-```
+```rb
 class Perrito
   
   def initialize(r)
@@ -2732,7 +2725,7 @@ Diferencia entre: `@raza` y `r`:
 
 Vamos a realizar otro método al cual llamaremos ladrar:
 
-```
+```rb
 class Perrito
   
   def initialize(r)
@@ -2755,7 +2748,7 @@ R: `wuau wuau`
 La clase vehiculo va a tener dos parámetros, asignamos a las variables de instancia los valores. Ya con esto podemos crear un objeto a partir de una clase:
 
 
-```
+```rb
 class Vehiculo
 
   def initialize(modelo, color)
@@ -2770,7 +2763,7 @@ end
 
 Podemos hacer un método que devuelva la variable de instancia `color`:
 
-```
+```rb
 class Vehiculo
 
   def initialize(modelo, color)
@@ -2795,14 +2788,14 @@ puts auto.color
 
 Nos devuelve lo siguiente:
 
-```
+```shell
 el vehiculo está en movimiento
 rojo
 ```
 
 Si quisiéramos acceder al modelo, tenemos que crear el método `modelo`, para mostrarlo y acceder.
 
-```
+```rb
 def modelo
     return @modelo
 end
@@ -2814,7 +2807,7 @@ Nos muestra en consola el modelo: `Corvette`
 
 En Ruby no es necesario la palabra reservada `return`, ya que solo podemos llamarla con la variable.
 
-```
+```rb
   def color
     @color
   end
@@ -2827,7 +2820,7 @@ En Ruby no es necesario la palabra reservada `return`, ya que solo podemos llama
 De igual manera nos retorna su valor y podemos acceder a el: `rojo` y `Corvette`.
 
 
-```
+```rb
 class Vehiculo
 
   def initialize(modelo, color)
@@ -2873,7 +2866,7 @@ Nos imprimirá: `negro`
 
 Con `attr_accessor`, ya no necesitamos los métodos de color y modelo.
 
-```
+```rb
 class Vehiculo
   attr_accessor :modelo, :color
 
@@ -2926,38 +2919,25 @@ R: `CADENA DE CARÁCTERES EN RUBY`
 
 R: `ybur ne seretcárac ed anedac`
 
-
-
 3- `puts "19".to_i` #convierte el string en entero: 19
 
 R: `19`
-
-
 
 4- `puts -5.abs` # convierte en número absoluto o positivo en este caso.
 
 R: `5`
 
-
-
-
 5- `puts 22.89.round` # redondea la cifra a un entero: 23
 
 R: `23`
-
-
-
 
 6- `puts ["hola", "mundo"].empty?` #nos devuelve: false
 
 R: `false`
 
-
-
-
 7- `puts "cadena de carácteres en ruby".split`
 
-```
+```shell
 cadena
 de
 carácteres
@@ -3031,7 +3011,7 @@ gatito.caminar
 Y nos devuelve: 
 
 
-```
+```shell
 camina cosita chica
 camina cosita chica
 ```
@@ -3055,7 +3035,7 @@ perrito.respirar
 
 Nos devuelve:
 
-```ruby
+```shell
 respira
 respira y jadea
 ```
@@ -3091,7 +3071,7 @@ Este hereda de: Object
 
 El método de instancia se define con `def`, `end` y el nombre, mientra que el método de clase se define con `def`, `self`, `end` y el nombre.
 
-```
+```shell
 La clase es el molde del objeto que quiero crear.
 La instancia es el objeto creado a partir de una clase.
 Los métodos de instancia son métodos que pueden ser llamados desde una instancia existente.
@@ -3103,7 +3083,7 @@ Variables de clase: `@@variable_clase`
 
 Un ejemplo de como emplearlas:
 
-```
+```rb
 class Persona
   attr_accessor :genero
   @@num_personas = 0
@@ -3149,7 +3129,7 @@ puts Empleado.calcular_finiquito(1300)
 
 Ento nos devolverá el número de personas que se hayan creado, el género, el identificador, el nivel y su finiquito.
 
-```
+```shell
 1 # cantidad de personas que se hayan creado
 Este empleado es de género femenino con identificador Add76367 y tiene un nivel de 3
 4000
@@ -3163,7 +3143,7 @@ Esta variable de clase `@@num_personas = 0`, va a devolvernos la cantidad de per
 
 Este método de clase nos ayudará a que la variable de clase funcione y podamos instanciarla o llamarla desde fuera.
 
-```
+```rb
   def self.num_personas
     @@num_personas
   end
@@ -3186,7 +3166,7 @@ Los Módulos, son bloques cerrados de códigos que poseen métodos, en los Módu
 
 En los Módulos, no podeos omitir el `self`, ya que no existen las variables de instancia ni los métodos de instancia, como se muestra a continuación:
 
-```
+```rb
 module Conversiones
   
   def self.euros_dolares(cantidad)
@@ -3202,7 +3182,7 @@ Esto nos devolverá `46`.
 
 Incluso podemos tener más de un método del módulo:
 
-```
+```rb
 module Conversiones
   
   def self.euros_dolares(cantidad)
@@ -3225,7 +3205,7 @@ puts respuesta
 Esto nos devolverá:
 
 
-```
+```shell
 46
 Conversión de 2 dólares a euros es: 46
 ```
@@ -3234,7 +3214,7 @@ Conversión de 2 dólares a euros es: 46
 
 Llamamos al operador de alcance: `Conversion::COMISION`.
 
-```
+```shell
 módulos                clases
 
 - herencia X           - herencia
@@ -3245,7 +3225,7 @@ módulos                clases
 
 Los módulos sirven para agrupar constantes, en este ejemplo nos devolverá el valor de PI:
 
-```
+```rb
 module ContantesMatematicas
   PI = 3.1416
   E = 2.718
@@ -3261,10 +3241,8 @@ Esto es más conocido como `namespace`, pero en otros lenguajes, en Ruby se le c
 Para saber como llamar al módulo, podemos ver el siguiente ejemplo, que nos devolverá: `mira este cubo`.
 
 
-```
+```rb
 module MiModulo
-  
-
   class Cubo
     
     def initialize
@@ -3275,19 +3253,14 @@ module MiModulo
     end
   end
 
-
   class Esfera
-    
 
     def initialize
-    
     end
 
     def rebotar
-    
     end
   end
-
 end
 
 un_cubo = MiModulo::Cubo.new
@@ -3297,9 +3270,8 @@ un_cubo.rotar
 Podemos tener más de un módulo y el que se encuentre una misma clase Cubo, pero que para Ruby esta class aunque tenga el mismo nombre que el primer módulo, será completamente diferente por el hecho de estar agrupada en otro Módulo.
 
 
-```
+```rb
 module MiModulo
-  
 
   class Cubo
     
@@ -3311,20 +3283,15 @@ module MiModulo
     end
   end
 
-
   class Esfera
-    
 
     def initialize
-    
     end
 
     def rebotar
-    
     end
   end
 end
-
 
 module MiModulo2
   
@@ -3348,18 +3315,17 @@ un_cubo2.rotar
 
 Esto nos devolverá lo siguiente:
 
-```
+```shell
 mira este cubo
 rotar diferente...
 ```
 
 También podemos agrupar `module` dentro de `module`:
 
-```
+```rb
 module MiModulo3
 
   module Test
-    
   end
     
 end
@@ -3378,7 +3344,7 @@ Aquí el `module`, estará agregandouna funcionalidad, no agrupar `module`.
 Por ejemplo, tenemos un juego en el que hereden ciertos poderes como magia o teletransportación, pero si todos heredan de la clase humano, el mago, la druida y el guerrero podrían heredar todos esos poderes y los guerreros no pueden hacer magia, entonces lo solucionamos haciendo lo siguiente:
 
 
-```
+```rb
 class Humano
   
   def caminar
@@ -3395,18 +3361,15 @@ module Magia
   end
 end
 
-
 class Mago < Humano
   
   include Magia
 end
 
-
 class Druida < Humano
   
   include Magia
 end
-
 
 class Guerrero < Humano
   
@@ -3424,7 +3387,7 @@ Esto nos devolverá: `teletransportación activada!`
 Simularemos que `circulos`, es un archivo externo pero dentro de la misma carpeta, al igual que `cuadrados`.
 
 
-```
+```rb
 require "./circulos"
 require "./cuadrados"
 
@@ -3438,7 +3401,7 @@ Cuadrados.saludar
 
 Nos indica dónde se va a ejecutar el bloque de código que le pasé al llamar al método, como se muestra en el ejemplo:
 
-```
+```rb
 def saludar
   puts "hola!"
   yield
@@ -3452,7 +3415,7 @@ saludar {puts "dentro del bloque"}
 Nos devolverá los tres llamados:
 
 
-```
+```shell
 hola!
 dentro del bloque
 fin del método
@@ -3464,7 +3427,7 @@ fin del método
 Incluso podemos pasarle un parámetro al método:
 
 
-```
+```rb
 def saludar(nombre)
   puts "hola #{nombre}!"
   yield
@@ -3477,7 +3440,7 @@ saludar('Juanita') {puts "dentro del bloque"}
 
 Esto nos devuelve:
 
-```
+```shell
 hola Juanita!
 dentro del bloque
 fin del método
@@ -3488,7 +3451,7 @@ dentro del bloque
 Pero si tenemos varias líneas de código podemos hacerlo con `do` y `end`.
 
 
-```
+```rb
 def saludar(nombre)
   puts "hola #{nombre}!"
   yield
@@ -3506,7 +3469,7 @@ end
 Esto nos devolverá:
 
 
-```
+```shell
 hola Juanita!
 dentro del bloque con yield
 otra linea de bloque con yield
@@ -3518,7 +3481,7 @@ otra linea de bloque con yield
 A `yield`, también podemos pasarle parámetros de la siguiente manera, para ordenar un poco el código:
 
 
-```
+```rb
 def saludar(nombre)
   yield('Pedro')
   puts "hola #{nombre}!"
@@ -3531,35 +3494,36 @@ end
 
 Esto se vería así:
 
-```
+```shell
 dentro del bloque con yield Pedro
 hola Juanita!
 ```
 
 ### Tipos de bloques
 
-```
+```rb
 3.times do
   puts "pueba"
 end
 ```
 
 R:
-```
+
+```shell
 pueba
 pueba
 pueba
 ```
 
 
-```
+```rb
 ['hola', 2, 'tres'].each do |x|
   puts x
 end
 ```
 
 R:
-```
+```shell
 hola
 2
 tres
@@ -3567,7 +3531,7 @@ tres
 
 
 
-```
+```rb
 grupo = [34,12,2,6,78,22,24,9]
 grupo.select! do |edad|
   edad >= 18
@@ -3577,7 +3541,7 @@ puts grupo
 ```
 
 R:
-```
+```shell
 34
 78
 22
@@ -3589,7 +3553,7 @@ R:
 Nos ayuda a no repetir el código, podemos crear nuestro objeto `procs`, y reutilizarlo.
 
 
-```
+```rb
 mayor_edad = Proc.new do |edad|
   edad >= 18
 end
@@ -3602,7 +3566,7 @@ puts grupo
 
 Esto de todas manera nos devuelve los mayores de edad:
 
-```
+```shell
 34
 78
 22
@@ -3611,7 +3575,7 @@ Esto de todas manera nos devuelve los mayores de edad:
 
 También podemos utilizarlo con los menores de edad y crear un `proc` para ese bloque:
 
-```
+```rb
 mayor_edad = Proc.new do |edad|
   edad >= 18
 end
@@ -3631,7 +3595,7 @@ puts grupo2
 
 ### Lambda
 
-```
+```rb
 un_proc = Proc.new do |x|
   puts x
 end
@@ -3643,7 +3607,7 @@ R: `45`
 
 Los lambdas los llamamos con:
 
-```
+```rb
 un_lambda = lambda do |x, y|
   puts x,y
 end
@@ -3657,7 +3621,7 @@ R: `23` y `25`
 Este código nos devuelve el `return` que nos da el método, pero si esto lo realizaramos con el `Proc.new`, nos retornaría el texto dentro del bloque:
 
 
-```
+```rb
 def mi_lambda
 
   test = lambda { return "return dentro del bloque"}
@@ -3676,7 +3640,7 @@ Ruby nos da una de las ventajas que es crear, leer y reecsribir archivos existen
 
 ***Crear***
 
-```
+```rb
 archivo = File.new("creando_archivo.txt", "w")
 archivo.puts('hola')
 archivo.close
@@ -3684,7 +3648,7 @@ archivo.close
 
 ***Agregar datos***
 
-```
+```rb
 archivo = File.open("creando_archivo.txt", "a")
 archivo.puts('otra linea')
 archivo.close
@@ -3694,7 +3658,7 @@ archivo.close
 ***Con estas líneas de código le estamos diciendo que agregue tantas líenas como veces ejecutemos el código***
 
 
-```
+```rb
 File.open('creando_archivo.txt', "a") do |file|
   file.puts('otra linea')
 end
@@ -3706,7 +3670,7 @@ end
 El método `while` nos permite leer el archivo línea por línea, aunque también la podemos hacer con `readlines`.
 
 
-```
+```rb
 File.open("creando_archivo.txt", "r") do |file|
   while linea = file.gets
     puts linea
@@ -3716,7 +3680,7 @@ end
 
 Este código hace exactamente lo mismo:
 
-```
+```rb
 File.open("creando_archivo.txt", "r") do |file|
   file.each_line do |linea|
     puts linea
@@ -3728,7 +3692,7 @@ end
 Podemos almacenar los datos dentro del archivo `txt` los podemos almacenar en variables:
 
 
-```
+```rb
 texto = File.read("creando_archivo.txt")
 puts texto
 ```
@@ -3736,7 +3700,7 @@ puts texto
 ***NOTA: El método `read`, nos permite abrir y cerrar el archivo.***
 
 
-```
+```rb
 arreglo = File.readlines("creando_archivo.txt")
 puts arreglo.class
 ```
@@ -3751,7 +3715,7 @@ Nos devuelve `true` si el archivo existe: `puts File.exist?("creando_archivo.txt
 ***Este método sería más útil si lo utilizamos con un condicional `if`***
 
 
-```
+```rb
 if puts File.exist?("creando_archivo.txt")
 
   File.open("creando_archivo.txt", "r") do |file|
@@ -3759,7 +3723,6 @@ if puts File.exist?("creando_archivo.txt")
       puts linea
     end
   end
-
 
   File.open("creando_archivo.txt", "r") do |file|
     file.each_line do |linea|
@@ -3781,7 +3744,7 @@ end
 
 Para renombrar el archivo, lo podemos hacer con  `File.rename`, esto va a recibir dos parámetros, el archivo al cual necesitaos renombrar y el nuevo nombre que va a recibir ese archivo.
 
-```
+```rb
 archivo = File.new("creando_archivo.txt", "w")
 archivo.close
 File.rename("creando_archivo.txt", "creando_archivo2_renombrado.txt")
@@ -3790,7 +3753,7 @@ File.rename("creando_archivo.txt", "creando_archivo2_renombrado.txt")
 ¿Qué pasa si ahora queremos eliminar este archivo?
 
 
-```
+```rb
 File.delete("creando_archivo2_renombrado.txt")
 ```
 
@@ -3815,7 +3778,7 @@ Para eliminar la carpeta, simplemente utilizamos el siguiente comando: `File.del
 Para recorrer e iterar todos los archivos que pueda contener nuestra carpeta raíz, esto nos enlistará todos los archivos dentro de la carpeta la cual le estoy dando la ruta dentro del paréntesis como parámetro, lo podemos hacer de la siguiente manera:
 
 
-```
+```rb
 Dir.foreach('./') do |item|
   puts item
 end
@@ -3829,7 +3792,7 @@ end
 Podemos tener el código en cinco lineas o podemos utilizar el ternario y hacerla en una sola linea, entendible y fácil de comprender.
 
 
-```
+```rb
 puts "Ingresa un número"
 
 numero = ARGV[0].to_i
@@ -3871,7 +3834,7 @@ Propiedades de las Matrices:
 
 Ejemplo de una matriz, utilizaremos `require matrix`, para el llamado de la matriz en el archivo.rb:
 
-```
+```rb
 require 'matrix'
 
 matriz = Matrix[[1, 2, 3], [4, 5, 6], [7, 8, 9]]
@@ -3880,7 +3843,7 @@ matriz = Matrix[[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
 Esta es la diagonal física la cual estaríamos trabajando:
 
-```
+```shell
 1 2 3
 4 5 6
 7 8 9
@@ -3890,7 +3853,7 @@ Esta es la diagonal física la cual estaríamos trabajando:
 Para saber cuál es la diagonal?
 
 
-```
+```rb
 matriz.each(:diagonal) do |i|
   puts i
 end
@@ -3902,7 +3865,7 @@ Esto nos devolverá: `1 5 9`
 Ahora para sacar los valores que están ór encima de la diagonal:
 
 
-```
+```rb
 matriz.each(:strict_upper) do |i|
   puts i 
 end
@@ -3913,7 +3876,7 @@ Esto nos devolverá: `2 3 6`
 
 Valor por debajo de la diagonal:
 
-```
+```rb
 matriz.each(:strict_lower) do |i|
   puts i 
 end
@@ -3923,7 +3886,7 @@ Lo cual debiera darnos: `4 7 8`
 
 Para saber si una matriz es una diagonal, en matemáticas las matrices son solo la diagonal y el resto se compone de ceros, por tanto si evaluamos esta matriz, nos debiera dar `false`. 
 
-```
+```rb
 puts matriz.diagonal?
 
 => false
@@ -3931,7 +3894,7 @@ puts matriz.diagonal?
 
 ***Para que sea una matriz debería ir de la siguiente manera:***
 
-```
+```rb
 matriz2 = Matrix[[1, 0, 0],[0, 2, 0],[0, 0, 3]]
 puts matriz2.diagonal?
 ```
@@ -3940,7 +3903,7 @@ Esto nos devolverá un `true`.
 
 Y de manera gráfica se verá:
 
-```
+```shell
 1 0 0
 0 2 0
 0 0 3
@@ -4065,7 +4028,7 @@ Pero existe un manera más corta para realizar lo mismo:
   - Copiar el código que nos entrega, seleccionar el lenguaje a utilizar `Ruby`
   - Nos entregará algo como esto:
 
-  ```ruby
+```ruby
   require "uri"
 require "json"
 require "net/http"
@@ -4109,7 +4072,7 @@ Luego:
 > `body[0]` => un arreglo y hash
 
 
-```ruby
+```shell
 => {"userId"=>1, "id"=>1, "title"=>"sunt aut facere repellat provident occaecati excepturi optio reprehenderit", "body"=>"quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"} 
 >  body[0] ["userId"]
 ```
